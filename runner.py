@@ -17,23 +17,23 @@ def main() -> None:
     if not path.exists("/configs/counter.txt"):
         shutil.copyfile("/youtubedl/origconfigs/counter.txt","/configs/counter.txt") 
     
-    # interval counter, default to 1 week 1 second (should be overrode by counter.txt)
-    intervalcounter = float(604801.0)
+#    # interval counter, default to 1 week 1 second (should be overrode by counter.txt)
+#    intervalcounter = float(604801.0)
     
-    # try to read counter file
-    try:
-        infile = open("/configs/counter.txt","r")
-        line = infile.readline()
-        test=float(line)
-        # minimum interval time of 1 hour
-        if test >= 3600:
-            intervalcounter=test
-    except:
-        print("bad counter.txt file")
+#    # try to read counter file
+#    try:
+#        infile = open("/configs/counter.txt","r")
+#        line = infile.readline()
+#        test=float(line)
+#        # minimum interval time of 1 hour
+#        if test >= 3600:
+#            intervalcounter=test
+#     except:
+#        print("bad counter.txt file")
     
-    print(f"Running youtubedl-auto every {intervalcounter}s", file=sys.stderr)
+#    print(f"Running youtubedl-auto every {intervalcounter}s", file=sys.stderr)
     while True:
-        start_time = time.time()
+#        start_time = time.time()
         
         # if configs folder doesn't have config files then copy the defaults
         if not path.exists("/configs/youtube-dl.conf"):
@@ -44,7 +44,7 @@ def main() -> None:
             shutil.copyfile("/youtubedl/origconfigs/youtube-dl-channels.txt","/configs/youtube-dl-channels.txt")                     
         
         # Dirty hack to implement the 429 error workaround provided by colethedj, lock to 3-8-20 branch for now
-        # https://gitlab.com/colethedj/youtube-dl-429-patch
+         # https://gitlab.com/colethedj/youtube-dl-429-patch
         prevdir = os.getcwd()
         os.chdir("/temp")
         run(["/usr/bin/git","clone","https://github.com/ytdl-org/youtube-dl.git","-b","2020.03.08","--depth","1"])
@@ -55,17 +55,20 @@ def main() -> None:
         run(["/usr/local/bin/pip3","install","."])
         os.chdir(prevdir)
         
+        #open bash shell
+        run(["/bin/bash"])
+        
         # re-enable pip install when hack no longer needed
         #run(["pip", "install", "--upgrade", "youtube-dl"])
         
         # run youtubedl every interval seconds
-        run(["/usr/local/bin/youtube-dl", "--config-location", "/configs/youtube-dl.conf"])
-        run_time = time.time() - start_time
-        if run_time < intervalcounter:
-            sleep_time = intervalcounter - run_time
-            print(f"Ran for {run_time}s", file=sys.stderr)
-            print(f"Sleeping for {sleep_time}s", file=sys.stderr)
-            time.sleep(sleep_time)
+#        run(["/usr/local/bin/youtube-dl", "--config-location", "/configs/youtube-dl.conf"])
+#        run_time = time.time() - start_time
+#        if run_time < intervalcounter:
+#            sleep_time = intervalcounter - run_time
+#            print(f"Ran for {run_time}s", file=sys.stderr)
+#            print(f"Sleeping for {sleep_time}s", file=sys.stderr)
+#            time.sleep(sleep_time)
 
 
 if __name__ == "__main__":

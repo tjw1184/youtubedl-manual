@@ -5,12 +5,12 @@ ARG BUILD_DATE
 ARG VCS_REF
 ARG VERSION
 LABEL org.label-schema.build-date=$BUILD_DATE \
-      org.label-schema.name="youtubedl-auto" \
+      org.label-schema.name="youtubedl-manual" \
       org.label-schema.maintainer="tjw1184" \      
-      org.label-schema.description="Preconfigured youtubedl-auto Server" \
-      org.label-schema.url="https://github.com/tjw1184/youtubedl-auto" \
+      org.label-schema.description="Preconfigured youtubedl-manual Server" \
+      org.label-schema.url="https://github.com/tjw1184/youtubedl-manual" \
       org.label-schema.vcs-ref=$VCS_REF \
-      org.label-schema.vcs-url="https://github.com/tjw1184/youtubedl-auto" \
+      org.label-schema.vcs-url="https://github.com/tjw1184/youtubedl-manual" \
       org.label-schema.vendor="tjw1184" \
       org.label-schema.version=$VERSION \
       org.label-schema.schema-version="1.0"

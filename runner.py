@@ -45,8 +45,8 @@ def main() -> None:
         
         # Dirty hack to implement the 429 error workaround provided by colethedj, lock to 3-8-20 branch for now
         # https://gitlab.com/colethedj/youtube-dl-429-patch
-        prevdir = os.getcwd()
-        os.chdir("/temp")
+        #prevdir = os.getcwd()
+        #os.chdir("/temp")
         
         # Updated youtube-dl broke the patch, so had to clone and hack the whole branch
         #run(["/usr/bin/git","clone","https://github.com/ytdl-org/youtube-dl.git","-b","2020.03.08","--depth","1"])
@@ -55,13 +55,13 @@ def main() -> None:
         #run(["/usr/bin/git","apply","../../youtube-dl-429-patch/youtube_dl_429.patch"])
         #os.chdir("/temp/youtube-dl")
         
-        run(["/usr/bin/git","clone","https://github.com/tjw1184/youtube-dl-429.git","-b","2020.05.08.429fix","--depth","1"])
-        os.chdir("/temp/youtube-dl-429")
-        run(["/usr/local/bin/pip3","install","."])
-        os.chdir(prevdir)
+        #run(["/usr/bin/git","clone","https://github.com/tjw1184/youtube-dl-429.git","-b","2020.05.08.429fix","--depth","1"])
+        #os.chdir("/temp/youtube-dl-429")
+        #run(["/usr/local/bin/pip3","install","."])
+        #os.chdir(prevdir)
         
         # re-enable pip install when hack no longer needed
-        #run(["pip", "install", "--upgrade", "youtube-dl"])
+        run(["pip", "install", "--upgrade", "youtube-dl"])
         
         #open bash shell
         run(["/bin/bash"])
